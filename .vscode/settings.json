@@ -1,0 +1,8 @@
+{
+    "files.associations": {
+        "main.h": "c",
+        "system_stm32f4xx.h": "c",
+        "stm32f4xx.h": "c",
+        "stdint.h": "c"
+    }
+}
