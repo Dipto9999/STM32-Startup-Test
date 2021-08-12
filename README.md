@@ -1,4 +1,4 @@
-# STM32 VSCode Startup Test
+# STM32 Startup Test
 
 ## Contents
 * [Overview](#Overview)
