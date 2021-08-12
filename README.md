@@ -87,7 +87,7 @@ __attribute__((section(".isr_vector")))
 const void(*VectorTable[])(void) = { ... }
 ```
 
-Based on the <b>STM32F40x Datasheet</b>, we fill the vector table with the interrupt order specified in <b>Table 43. Vector table for STM32F40x and STM3241x</b>.
+Based on the <b>STM32F40x Datasheet</b>, we fill in the vector table with the interrupt order specified in <b>Table 43. Vector table for STM32F40x and STM3241x</b>.
 
 <p align="center">
     <img src="Images/Vector_Table_Sample.JPG" width="60%" height="90%" title="Sample of Vector Table From Datasheet" >
@@ -97,9 +97,9 @@ Based on the <b>STM32F40x Datasheet</b>, we fill the vector table with the inter
     -------------------------------------------
 </p>
 
-The <b>ASM</b> startup file was removed and the <b>C</b> startup file was added in the <b>Makefile</b>.
+The reference to the <b>ASM</b> startup file was removed and the reference to the <b>C</b> startup file was added in the <b>Makefile</b>.
 
 
 ## Credit
 
-This project was created and tested following tutorials from the <b>EmbeddedGeek Youtube <a href = "https://www.youtube.com/channel/UCuigr_BEzX1g3Qvwq5QjPXg">Channel</a></b>.
+This project was created and tested following tutorials from the <b><a href = "https://www.youtube.com/channel/UCuigr_BEzX1g3Qvwq5QjPXg">EmbeddedGeek</a> Youtube Channel</b>.
