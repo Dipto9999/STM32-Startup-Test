@@ -14,7 +14,7 @@
 
 ## Overview
 
-A basic project is implemented to blink the <b>LD2</b> LED pin on the <b>STM32401RE</b> and communicate with the computer via <b>UART Serial Communication</b>. This involved sending a simple "Hello World" message to a serial <b>COM</b> port at the press of the <b>B1</b> User Button.
+A basic project is implemented to blink the <b>LD2 LED</b> pin on the <b>STM32401RE</b> and communicate with the computer via <b>UART Serial Communication</b>. This involved sending a simple "Hello World" message to a serial <b>COM</b> port at the press of the <b>B1</b> User Button.
 
 ## Installations
 
@@ -94,9 +94,6 @@ Based on the <b>STM32F40x Datasheet</b>, we fill in the vector table with the in
     <img src="Images/Vector_Table_Sample.JPG" width="60%" height="90%" title="Sample of Vector Table From Datasheet" >
 </p>
 
-<p align="center">
-    -------------------------------------------
-</p>
 
 The reference to the <b>ASM</b> startup file was removed and the reference to the <b>C</b> startup file was added in the [(`Makefile`)](Makefile).
 
