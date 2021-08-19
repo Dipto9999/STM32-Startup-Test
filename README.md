@@ -5,7 +5,7 @@
 * [Overview](#Overview)
 * [Installations](#Installations)
     * [STM32CubeMX](#STM32CubeMX)
-    * [Build & Compile Tools](#Build-&-Compile-Tools)
+    * [Build Tools](#Build-Tools)
     * [VSCode Editor](#VSCode-Editor)
 * [ASM Modification](#ASM-Modification)
     * [Reset Handler](#Reset-Handler)
@@ -24,7 +24,7 @@ The project files were generated using the <b>STM32CubeMX</b> Graphical Tool Sof
 
 The <b>USART2</b> peripheral is configured in <b>Asynchronous Mode</b>. We selected the [Makefile](Makefile) toolchain to work with individually installed tools on the <b>VSCode</b> Editor.
 
-### Build & Compile Tools
+### Build Tools
 
 Flashing the project onto the <b>STM32 Nucleo Board</b> required the <b>ARM GCC</b> <b>C</b> Compiler, <b>Make</b> Automation Tool, and the <b>Open On-Chip Debugger (OpenOCD) Debugger</b> for Embedded Devices.
 
