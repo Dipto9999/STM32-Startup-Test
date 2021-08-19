@@ -98,7 +98,7 @@ Based on the <b>STM32F40x Datasheet</b>, we fill in the vector table with the in
     -------------------------------------------
 </p>
 
-The reference to the <b>ASM</b> startup file was removed and the reference to the <b>C</b> startup file was added in the <b>Makefile</b>.
+The reference to the <b>ASM</b> startup file was removed and the reference to the <b>C</b> startup file was added in the [(`Makefile`)](Makefile).
 
 
 ## Credit
