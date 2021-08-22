@@ -10,11 +10,16 @@
 * [ASM Modification](#ASM-Modification)
     * [Reset Handler](#Reset-Handler)
     * [Vector Table](#Vector-Table)
+* [Flash Executable](#Flash-Executable)
+    * [Serial Communication](#Serial-Communication)
+    * [Demonstration](#Demonstration)
 * [Credit](#Credit)
 
 ## Overview
 
 A basic project is implemented to blink the <b>LD2 LED</b> pin on the <b>STM32401RE</b> and communicate with the computer via <b>UART Serial Communication</b>. This involved sending a simple "Hello World" message to a serial <b>COM</b> port at the press of the <b>B1</b> User Button.
+
+<p align="center"><img src="Images/Layout.JPG" height="60%" width="60%" title="Layout of STM32 Nucleo Board from Top" ></p>
 
 ## Installations
 
@@ -91,12 +96,34 @@ const void(*VectorTable[])(void) = { ... }
 Based on the <b>STM32F40x Datasheet</b>, we fill in the vector table with the interrupt order specified in <b>Table 43. Vector table for STM32F40x and STM3241x</b>.
 
 <p align="center">
-    <img src="Images/Vector_Table_Sample.JPG" width="60%" height="90%" title="Sample of Vector Table From Datasheet" >
+    <img src="Images/Vector_Table_Sample.JPG" width="60%" height="90%" title="Sample of Vector Table From Datasheet." >
 </p>
 
 
 The reference to the <b>ASM</b> startup file was removed and the reference to the <b>C</b> startup file was added in the [(`Makefile`)](Makefile).
 
+
+## Flash Executable
+
+Flashing the [(`Startup_Test.elf`)](/build/Startup_Test.elf) executable onto the <b>STM32 Nucleo Board</b> required modifying the [(`Makefile`)](Makefile) to include the `make flash` command.
+
+```Makefile
+#######################################
+# flash
+#######################################
+flash: all
+	openocd -f interface/stlink.cfg -f target/stm32f4x.cfg -c "program $(BUILD_DIR)/$(TARGET).elf verify reset exit"
+```
+
+### Serial Communication
+
+The <b>PuTTY SSH</b> client is used to establish a terminal connection with the <b>STM32</b> device as shown below.
+
+<p align="center"><img src="Images/PuTTY_Configuration.JPG" height="40%" width="40%" title="Configuration of PuTTY SSH client for UART Communication." ></p>
+
+### Demonstration
+
+The videos in the [`Demonstration`](Demonstration) directory show the <b>UART Communication</b> as well as the output on the <b>STM32 Nucleo Board</b>. I have embedded a low resolution compressed versions below.
 
 ## Credit
 
