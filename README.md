@@ -105,7 +105,7 @@ The reference to the <b>ASM</b> startup file was removed and the reference to th
 
 ## Flash Executable
 
-Flashing the [(`Startup_Test.elf`)] executable onto the <b>STM32 Nucleo Board</b> required modifying the [(`Makefile`)](Makefile) to include the `make flash` command.
+Flashing the (`Startup_Test.elf`) executable onto the <b>STM32 Nucleo Board</b> required modifying the [(`Makefile`)](Makefile) to include the `make flash` command.
 
 ```Makefile
 #######################################
