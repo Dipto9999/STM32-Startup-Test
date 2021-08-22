@@ -25,7 +25,7 @@ A basic project is implemented to blink the <b>LD2 LED</b> pin on the <b>STM3240
 
 ### STM32CubeMX
 
-The project files were generated using the <b>STM32CubeMX</b> Graphical Tool Software. The project configuration can be viewed and modified in the [(`StartupTest.ioc`)](StartupTest.ioc) file.
+The project files were generated using the <b>STM32CubeMX</b> Graphical Tool Software. The project configuration can be viewed and modified in the [(`Startup_Test.ioc`)](Startup_Test.ioc) file.
 
 The <b>USART2</b> peripheral is configured in <b>Asynchronous Mode</b>. We selected the [Makefile](Makefile) toolchain to work with individually installed tools on the <b>VSCode</b> Editor.
 
@@ -105,7 +105,7 @@ The reference to the <b>ASM</b> startup file was removed and the reference to th
 
 ## Flash Executable
 
-Flashing the [(`Startup_Test.elf`)](/build/Startup_Test.elf) executable onto the <b>STM32 Nucleo Board</b> required modifying the [(`Makefile`)](Makefile) to include the `make flash` command.
+Flashing the [(`Startup_Test.elf`)](build/Startup_Test.elf) executable onto the <b>STM32 Nucleo Board</b> required modifying the [(`Makefile`)](Makefile) to include the `make flash` command.
 
 ```Makefile
 #######################################
