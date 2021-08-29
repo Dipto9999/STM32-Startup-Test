@@ -132,15 +132,15 @@ For <b>ARM Cortex-M4 Core</b> processors, the <b>Vector Table</b> is of the form
     <img src="Images/Vector_Table_Cortex_M4.JPG" width="60%" height="90%" title="Sample of Cortex-M4 Vector Table From Programming Manual." >
 </p>
 
-We use the <b>GDB Debug Console</b> to set breakpoints in the ```void SystemInit();``` function. We write the command ```x/256w 0x08000000``` and view 256 <b>Words</b> of memory written at the starting address of the flash memory.
+We use the <b>GDB Debug Console</b> to set breakpoints in the ```void SystemInit();``` function. We write the command ```x/256xw 0x08000000``` and view 256 <b>Words</b> of memory written at the starting address of the flash memory.
 
 <p align="center">
     <img src="Images/Vector_Table_Flash.JPG" width="60%" height="90%" title="GDB Output of Vector Table in Flash." >
 </p>
 
-We see that the <b>Vector Table</b> occupies memory addresses from `0x08000000` to `0x0800019c` in flash memory. This is equivalent to 412 <b>Bytes</b> occupied by 104 unique entries in the <b>Vector Table</b>. From this, we know to copy 104 <b>Words</b> of data in the ```void CopyVectTab(...);``` function.
+We see that the <b>Vector Table</b> occupies memory addresses from `0x08000000` to `0x0800019C` in flash memory. This is equivalent to 412 <b>Bytes</b> occupied by 104 unique entries in the <b>Vector Table</b>. From this, we know to copy 104 <b>Words</b> of data in the ```void CopyVectTab(...);``` function.
 
-Now, we use the <b>GDB Debug Console</b> to write the command ```x/104w 0x20000200``` and view 104 <b>Words</b> of memory written at the offset address in <b>SRAM</b>.
+Now, we use the <b>GDB Debug Console</b> to write the command ```x/104xw 0x20000200``` and view 104 <b>Words</b> of memory written at the offset address in <b>SRAM</b>.
 
 <p align="center">
     <img src="Images/Vector_Table_SRAM.JPG" width="60%" height="90%" title="GDB Output of Vector Table in SRAM." >
@@ -150,7 +150,7 @@ Now, we use the <b>GDB Debug Console</b> to write the command ```x/104w 0x200002
 
 The <b>Cortex-M4 Programming Manual</b> provided by <b>STMicroelectronics</b> states that <b>SysTick Exception</b> is generated when the 24-<b>Bit SysTick Timer (i.e. STK)</b> counts down from the reload value to 0. The <b>SysTick Timer (i.e. STK)</b> reloads this value on the subsequent clock edge and counts down again.
 
-Let's use our <b>Debug Console</b> to see if the <b>SysTick Vector</b> holds the starting address of its <b>Exception Handler</b>. We first run the <b>GDB</b> command ```x/w 0x2000023C``` to determine the intended starting address, ```0x80006B8```. Note that the starting address is stored in the <b>Vector Table</b> as ```0x80006B9``` to inform the processor that it's executing a <b>Thumb Instruction</b>.
+Let's use our <b>Debug Console</b> to see if the <b>SysTick Vector</b> holds the starting address of its <b>Exception Handler</b>. We first run the <b>GDB</b> command ```x/xw 0x2000023C``` to determine the intended starting address, ```0x80006B8```. Note that the starting address is stored in the <b>Vector Table</b> as ```0x80006B9``` to inform the processor that it's executing a <b>Thumb Instruction</b>.
 
 Then we run command ```disassemble 0x80006B8``` to verify this is the starting address of the ```void SysTick_Handler(void);``` function as shown below.
 
