@@ -153,7 +153,7 @@ Let's use our <b>Debug Console</b> to see if the <b>SysTick Vector</b> holds the
 Then we run command ```disassemble 0x80006B8``` to verify this is the starting address of the ```void SysTick_Handler(void);``` function as shown below.
 
 <p align="center">
-    <img src="Disassemble_SysTick_Handler.JPG" width="40%" height="40%" title="Dissassembly of SysTick Handler Starting Address." >
+    <img src="Images/Disassemble_SysTick_Handler.JPG" width="40%" height="40%" title="Dissassembly of SysTick Handler Starting Address." >
 </p>
 
 We see that the <b>Vector Table</b> copied to <b>SRAM</b> matches that in flash memory and that it maps the starting addresses of the <b>Exception Handlers</b>. From this, we assume we are successful at this stage.
