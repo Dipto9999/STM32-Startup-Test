@@ -96,7 +96,7 @@
 
 #if defined(USER_VECT_TAB_ADDRESS)
 
-void CopyVectTab(unsigned long start_original, unsigned long start_copy);
+void CopyVectTab(uint32_t start_original, uint32_t start_copy);
 
 /*!< Uncomment the following line if you need to relocate your vector Table
      in Sram else user remap will be done in Flash. */
@@ -108,7 +108,7 @@ void CopyVectTab(unsigned long start_original, unsigned long start_copy);
 #define VECT_TAB_OFFSET         0x200U    /*!< Vector Table base offset field.
                                                      This value must be a multiple of 0x200. */
 #define VECT_TAB_ENTRIES 104
-#define HW32_REG(ADDR) (*(volatile unsigned long *)(ADDR))
+#define HW32_REG(ADDR) (*(volatile uint32_t *)(ADDR))
 
 #else
 #define VECT_TAB_BASE_ADDRESS   FLASH_BASE      /*!< Vector Table base address field.
@@ -199,14 +199,14 @@ void SystemInit(void)
 
 /*
  * @brief  Copy Vector Table from Original Address in Flash Memory to New Address.
- * @param  start_original is an unsigned long type value which represents the starting address of the original
- *         memory location; start_copy is an unsigned long type value which represents the address to copy the
+ * @param  start_original is an uint32_t type value which represents the starting address of the original
+ *         memory location; start_copy is an uint32_t type value which represents the address to copy the
  *         vector table to.
  * @retval None
  */
-void CopyVectTab(unsigned long start_original, unsigned long start_copy) {
+void CopyVectTab(uint32_t start_original, uint32_t start_copy) {
   int vect_tab_index;
-  unsigned long curr_original, curr_copy;
+  uint32_t curr_original, curr_copy;
 
   for (vect_tab_index = 0; vect_tab_index < VECT_TAB_ENTRIES; vect_tab_index++) {
     // Left Shifting By 2 is Equivalent to Multiplying by 2^2.
