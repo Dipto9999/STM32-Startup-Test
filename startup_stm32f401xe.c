@@ -27,15 +27,11 @@ void Reset_Handler() {
   // Initialize data Segment
   uint32_t* dataInit = &_sidata;
   uint32_t* data = &_sdata;
-  while(data < &_edata) {
-    *data++ = *dataInit++;
-  }
+  while(data < &_edata) *data++ = *dataInit++;
 
   // Initialize bss Segment.
   uint32_t *bss = &_sbss;
-  while (bss < &_ebss) {
-    *bss++ = 0;
-  }
+  while (bss < &_ebss) *bss++ = 0;
 
   // Run ST System Initialization.
   SystemInit();

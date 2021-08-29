@@ -17,7 +17,7 @@
                 "target/stm32f4x.cfg"
             ],
             "preLaunchTask": "Make: build binary executable",
-            "svdFile": "./STM32F401.svd",
+            "svdFile": "./STM32F401.svd"
         }
     ]
 }
