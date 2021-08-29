@@ -1,4 +1,4 @@
-# STM32 and ARM Cortex M4 Startup Test
+# STM32 and ARM Cortex-M4 Startup Test
 
 ## Contents
 
@@ -24,6 +24,8 @@
 A basic project is implemented to blink the <b>LD2 LED</b> pin on the <b>STM32401RE</b> and communicate with the computer via <b>UART Serial Communication</b>. This involved sending a simple "Hello World" message to a serial <b>COM</b> port at the press of the <b>B1</b> User Button.
 
 <p align="center"><img src="Images/Layout.JPG" height="60%" width="60%" title="Layout of STM32 Nucleo Board from Top" ></p>
+
+The startup functionality was modified using the <b>Thumb Instruction Set</b> on the <b>ARM Cortex-M4 Core</b> processor. This was done by going into the <b>ASM</b> and modifying it into <b>C</b> code and by relocating the <b>Vector Table</b> from flash memory to static random-access memory (i.e. <b>SRAM</b>).
 
 ## Installations
 
@@ -124,7 +126,7 @@ SCB->VTOR = VECT_TAB_BASE_ADDRESS | VECT_TAB_OFFSET;
 
 This allows dynamically changing <b>Exception Handler</b> entrance points during runtime. Also, if the flash memory is very slow, this allows for faster vector fetch.
 
-For <b>ARM Cortex M4 Core</b> processors, the <b>Vector Table</b> is of the format below, where <b>IRQ0</b> ... <b>IRQ239</b> are the starting addresses for <b>Device Specific Interrupt Service Routines (i.e. ISR)</b>.
+For <b>ARM Cortex-M4 Core</b> processors, the <b>Vector Table</b> is of the format below, where <b>IRQ0</b> ... <b>IRQ239</b> are the starting addresses for <b>Device Specific Interrupt Service Routines (i.e. ISR)</b>.
 
 <p align="center">
     <img src="Images/Vector_Table_Cortex_M4.JPG" width="60%" height="90%" title="Sample of Cortex-M4 Vector Table From Programming Manual." >
@@ -146,7 +148,7 @@ Now, we use the <b>GDB Debug Console</b> to write the command ```x/104w 0x200002
 
 ### SysTick Handler
 
-The <b>Cortex M4 Programming Manual</b> provided by <b>STMicroelectronics</b> states that <b>SysTick Exception</b> is generated when the 24-<b>Bit SysTick Timer (i.e. STK)</b> counts down from the reload value to 0. The <b>SysTick Timer (i.e. STK)</b> reloads this value on the subsequent clock edge and counts down again.
+The <b>Cortex-M4 Programming Manual</b> provided by <b>STMicroelectronics</b> states that <b>SysTick Exception</b> is generated when the 24-<b>Bit SysTick Timer (i.e. STK)</b> counts down from the reload value to 0. The <b>SysTick Timer (i.e. STK)</b> reloads this value on the subsequent clock edge and counts down again.
 
 Let's use our <b>Debug Console</b> to see if the <b>SysTick Vector</b> holds the starting address of its <b>Exception Handler</b>. We first run the <b>GDB</b> command ```x/w 0x2000023C``` to determine the intended starting address, ```0x80006B8```. Note that the starting address is stored in the <b>Vector Table</b> as ```0x80006B9``` to inform the processor that it's executing a <b>Thumb Instruction</b>.
 
